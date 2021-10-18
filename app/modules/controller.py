@@ -8,13 +8,16 @@ def index():
         name = request.form['name']
         nim = request.form['nim']
         jurusan = request.form['jurusan']
-        try:
+        cek = Mahasiswa.query.filter_by(nim=nim).first()
+        error = None
+        iff = name is not "" and nim is not '' and jurusan is not ''
+        if cek == None and iff:
             mhs = Mahasiswa(nim=nim, name=name,jurusan=jurusan)
             db.session.add(mhs)
             db.session.commit()
-        except Exception as e:
-            print("Failed to add data.")
-            print(e)
+        else:
+            error = "Data Yang Anda masukkan telah ada,atau data yang anda masukkan tidak benar"
+            return render_template('error.html',data=error)
     listMhs = Mahasiswa.query.all()
     print(listMhs)
     # return redirect("/")
@@ -54,6 +57,15 @@ def delete(id):
         print("Failed delete mahasiswa")
         print(e)
     return redirect("/")
+
+@app.route('/coba/<nim>')
+def coba(nim):
+    data = Mahasiswa.query.filter_by(nim=nim).first()
+    if data == None:
+        return "Kosong"
+    else:
+        return data.name
+
 
 
 

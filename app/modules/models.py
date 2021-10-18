@@ -5,7 +5,7 @@ db = SQLAlchemy(app)
 
 class Mahasiswa(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True, nullable=False)
-    nim = db.Column(db.String, nullable=False)
+    nim = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String, nullable=False)
     jurusan = db.Column(db.String,nullable=False)
 

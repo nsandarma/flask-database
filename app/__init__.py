@@ -10,3 +10,4 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 from app.modules.controller import *
 from app.modules.rest_api import *
+from app.modules.models import *
