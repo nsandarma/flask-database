@@ -1,5 +1,5 @@
 from flask_restful import Resource,Api,reqparse
-from app import app
+from applikasi import app
 from .models import db, Mahasiswa
 from flask_marshmallow import Marshmallow # new
 from flask import request
