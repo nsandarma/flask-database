@@ -8,6 +8,6 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
-from app.modules.controller import *
-from app.modules.rest_api import *
-from app.modules.models import *
+from applikasi.modules.controller import *
+from applikasi.modules.rest_api import *
+from applikasi.modules.models import *
