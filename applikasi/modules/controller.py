@@ -21,12 +21,12 @@ def index():
     listMhs = Mahasiswa.query.all()
     print(listMhs)
     # return redirect("/")
-    return render_template("home.html",data=enumerate(listMhs,0))
+    return render_template("index.html",data=enumerate(listMhs,0))
 
 @app.route('/form-update/<int:id>')
 def updateForm(id):
     mhs = Mahasiswa.query.filter_by(id=id).first()
-    return render_template("form-update.html", data=mhs)
+    return render_template("update.html", data=mhs)
     # return "hello world"
 
 @app.route('/form-update', methods=['POST'])
