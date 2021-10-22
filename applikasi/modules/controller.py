@@ -15,6 +15,7 @@ def index():
             mhs = Mahasiswa(nim=nim, name=name,jurusan=jurusan)
             db.session.add(mhs)
             db.session.commit()
+            db.session.close()
         else:
             error = "Data Yang Anda masukkan telah ada,atau data yang anda masukkan tidak benar"
             return render_template('error.html',data=error)
@@ -42,6 +43,7 @@ def update():
             mhs.nim = nim
             mhs.jurusan = jurusan
             db.session.commit()
+            db.session.close()
         except Exception as e:
             print("Failed to update data")
             print(e)
@@ -53,6 +55,7 @@ def delete(id):
         mhs = Mahasiswa.query.filter_by(id=id).first()
         db.session.delete(mhs)
         db.session.commit()
+        db.session.close()
     except Exception as e:
         print("Failed delete mahasiswa")
         print(e)

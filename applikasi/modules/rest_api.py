@@ -37,6 +37,7 @@ class Data(Resource):
             mhs = Mahasiswa(name=name,nim=nim,jurusan=jurusan)
             db.session.add(mhs)
             db.session.commit()
+            db.session.close()
             return {'status':'True',"data":[name,nim,jurusan]}
         except Exception as e:
             return {"status":"failed"}
@@ -49,6 +50,7 @@ class Data(Resource):
             mhs = Mahasiswa.query.filter_by(id=id).first()
             db.session.delete(mhs)
             db.session.commit()
+            db.session.close()
             return {'status':'deleted'}
         except Exception as e:
             return {'status':"Error"}
