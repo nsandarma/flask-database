@@ -6,7 +6,7 @@ database_file = "sqlite:///{}".format(os.path.join(project_dir, "flaskcrud.db"))
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 from applikasi.modules.controller import *
 from applikasi.modules.rest_api import *
